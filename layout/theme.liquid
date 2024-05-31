@@ -15,6 +15,10 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -87,6 +91,13 @@
         --color-badge-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
         --color-badge-border: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
         --payment-terms-background-color: rgb({{ scheme.settings.background.rgb }});
+
+        --color-primary: #96BB7C;
+        --color-second: #004751;
+        --text-color-first: #252B42;
+        --text-color-second: #737373;
+        --text-color-third: #96BB7C;
+        --font-first: "Montserrat", sans-serif;
       }
       {% endfor %}
 
@@ -269,6 +280,8 @@
       <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    <link href="{{ 'bootstrap.css' | asset_url }}" rel="stylesheet" type="text/css" />
+
     {%- if settings.predictive_search_enabled -%}
       <link
         rel="stylesheet"
@@ -355,5 +368,7 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script src="{{ 'bootstrap.bundle.min.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

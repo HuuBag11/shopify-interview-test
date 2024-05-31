@@ -1,0 +1,4 @@
+templates/*.json
+config/*.json
+locales/*.json
+sections/*.json

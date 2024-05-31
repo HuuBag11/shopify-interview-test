@@ -1,0 +1,79 @@
+<style>
+#spc_spacing .spc_on_desktop {
+  display: block; 
+}
+#spc_spacing .spc_on_tablet,
+#spc_spacing .spc_on_mobile {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  #spc_spacing .spc_on_tablet {
+    display: block;
+  }
+  #spc_spacing .spc_on_desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  #spc_spacing .spc_on_desktop,
+  #spc_spacing .spc_on_tablet {
+    display: none;
+  }
+  #spc_spacing .spc_on_mobile {
+    display: block;
+  }
+}
+</style>
+<section id="spc_spacing">
+    {%- liquid
+        assign spc_on_desktop = section.settings.spc_on_desktop
+        assign spc_on_tablet = section.settings.spc_on_tablet
+        assign spc_on_mobile = section.settings.spc_on_mobile
+    -%}
+    {% if spc_on_desktop != 0 %}
+        <div class="spc_on_desktop" style="height: {{spc_on_desktop}}px;"></div>
+    {% endif%}
+    {% if spc_on_tablet != 0 %}
+        <div class="spc_on_tablet" style="height: {{spc_on_tablet}}px;"></div>
+    {% endif%}
+    {% if spc_on_mobile != 0 %}
+        <div class="spc_on_mobile" style="height: {{spc_on_mobile}}px;"></div>
+    {% endif%}
+</section>
+
+{% schema %}
+{
+  "name": "Spacing",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Enter spacing for certain screen (px)."
+    },
+    {
+      "type": "number",
+      "id": "spc_on_desktop",
+      "label": "Spacing on Desktop",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "spc_on_tablet",
+      "label": "Spacing on Tablet",
+      "default": 0
+    },
+    {
+      "type": "number",
+      "id": "spc_on_mobile",
+      "label": "Spacing on Mobile",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spacing"
+    }
+  ]
+}
+{% endschema %}

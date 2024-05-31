@@ -1,0 +1,323 @@
+<style>
+  #featuredEducation .featuredEducation__list{
+    list-style: none;
+  }
+
+  #featuredEducation .featuredEducation__wrapper{
+    padding: 0 10px;
+  }
+
+  #featuredEducation .subtitle{
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--text-color-third);
+    margin-bottom: 10px;
+  }
+
+  #featuredEducation .title{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    color: var(--text-color-first);
+    margin: 0;
+    margin-bottom: 10px;
+  }
+
+  #featuredEducation .desc,
+  #featuredEducation .desc *{
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--text-color-second);
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+
+  #featuredEducation .featuredEducation__list{
+    margin: 0 -15px;
+    margin-top: 50px;
+    list-style: none;
+    row-gap: 30px;
+  }
+
+  #featuredEducation .featuredEducation__list--item{
+    padding: 0 15px;
+  }
+
+  #featuredEducation .featuredEducation__list--item .item--wrapper{
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 13px 19px 0 rgba(0, 0, 0, 0.09);
+    transform: translateY(0);
+    transition: all 0.5s ease;
+    min-height: 100%;
+  }
+
+  #featuredEducation .featuredEducation__list--item .item--wrapper:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 13px 19px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  #featuredEducation .featuredEducation__list--item .item__image{
+    width: 100%;
+    aspect-ratio: 238 / 231;
+    overflow: hidden;
+  }
+
+  #featuredEducation .featuredEducation__list--item .item__image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #featuredEducation .featuredEducation__list--item .item__content{
+    padding: 30px;
+    background-color: #FFF;
+  }
+
+  #featuredEducation .item__content--social{
+    list-style: none;
+  }
+
+  #featuredEducation .featuredEducation__list--item .item__content--title{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.1px;
+    color: var(--text-color-first);
+  }
+
+  #featuredEducation .featuredEducation__list--item .item__content--postion{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    color: var(--text-color-second);
+  }
+
+  #featuredEducation .featuredEducation__list--item .item__content--social{
+    margin-top: 10px;
+    gap: 20px;
+  }
+
+  #featuredEducation .featuredEducation__list--item .social--item svg{
+    transition: all 0.4s ease;
+    width: 100%;
+    height: auto;
+  }
+
+  #featuredEducation .featuredEducation__list--item .social--item a:hover svg path{
+    color: var(--text-color-first);
+    fill: var(--text-color-first);
+  }
+
+  #featuredEducation .item__content--social .social--item{
+    width: 25px;
+    height: auto;
+  }
+
+  @media (max-width: 990px){
+    #featuredEducation .featuredEducation__wrapper{
+      padding: 0 30px;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px){
+    #featuredEducation .title{
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    #featuredEducation .featuredEducation__list{
+      margin: 0 -10px;
+      margin-top: 30px;
+      row-gap: 15px;
+    }
+
+    #featuredEducation .featuredEducation__list--item{
+      padding: 0 7.5px;
+    }
+
+    #featuredEducation .featuredEducation__wrapper{
+      padding: 0 20px;
+    }
+
+    #featuredEducation .featuredEducation__list--item .item__content{
+      padding: 20px 10px;
+    }
+
+    #featuredEducation .featuredEducation__list--item .item__content--social{
+      gap: 10px;
+    }
+
+    #featuredEducation .item__content--social .social--item{
+      width: 20px;
+      height: auto;
+    }
+
+    #featuredEducation .featuredEducation__list--item .item__content--title{
+      line-height: 20px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<section id="featuredEducation">
+  <div class="featuredEducation__wrapper page-width page-width-desktop">
+    {% if section.settings.sub_title != blank %}
+      <span class="subtitle d-block">{{ section.settings.sub_title }}</span>
+    {% endif %}
+
+    {% if section.settings.title != blank %}
+      <h1 class="title">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% if section.settings.desc != blank %}
+      <div class="desc">
+        {{ section.settings.desc }}
+      </div>
+    {% endif %}
+
+    {% if section.blocks != blank %}
+    <ul class="featuredEducation__list row p-0 justify-content-center">
+      {% for block in section.blocks %}
+        <li class="featuredEducation__list--item col-lg-3 col-md-4 col-6">
+          <div class="item--wrapper d-flex flex-column h-100">
+            <div class="item__image">
+              <img src="{{ block.settings.person_image |  image_url  }}" alt="{{ block.settings.title }}">
+            </div>
+            <div class="item__content">
+              {% if block.settings.person_title != blank %}
+                <h3 class="item__content--title text-center">{{ block.settings.person_title }}</h3>
+              {% endif %}
+
+              {% if block.settings.person_desc != blank %}
+                <span class="d-block item__content--postion text-center">{{ block.settings.person_desc }}</span>
+              {% endif %}
+              <ul class="item__content--social p-0 d-flex align-items-center justify-content-center">
+                {% if block.settings.fb_link != blank %}
+                  <li class="social--item fb">
+                    <a href="{{ block.settings.fb_link }}" title="facebook">
+                      <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_2636_3497)">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M24 11.5704C24 5.1801 18.8515 0 12.5014 0C6.14848 0.00143732 1 5.1801 1 11.5719C1 17.3456 5.2056 22.1319 10.7019 23V14.9151H7.78415V11.5719H10.7048V9.02062C10.7048 6.12155 12.4224 4.52037 15.0484 4.52037C16.3075 4.52037 17.6226 4.74603 17.6226 4.74603V7.59193H16.1724C14.7451 7.59193 14.2995 8.4845 14.2995 9.40008V11.5704H17.4875L16.9787 14.9136H14.2981V22.9986C19.7944 22.1304 24 17.3441 24 11.5704Z" fill="#96BB7C"/>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_2636_3497">
+                      <rect width="24" height="24" fill="white" transform="translate(0.5)"/>
+                      </clipPath>
+                      </defs>
+                      </svg>
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if block.settings.ins_link != blank %}
+                  <li class="social--item ins">
+                    <a href="{{ block.settings.ins_link }}" title="instagram">
+                      <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.5 0C8.51488 0 8.1395 0.01375 6.96663 0.066C5.79375 0.121 4.99487 0.30525 4.295 0.5775C3.56088 0.853626 2.89593 1.28676 2.34663 1.84663C1.7871 2.39621 1.35402 3.06108 1.0775 3.795C0.80525 4.4935 0.619625 5.29375 0.566 6.4625C0.51375 7.63812 0.5 8.01213 0.5 11.0014C0.5 13.9879 0.51375 14.3619 0.566 15.5347C0.621 16.7062 0.80525 17.5051 1.0775 18.205C1.35938 18.9282 1.73475 19.5415 2.34663 20.1534C2.95713 20.7652 3.57037 21.142 4.29363 21.4225C4.99487 21.6947 5.79238 21.8804 6.96388 21.934C8.13813 21.9862 8.51213 22 11.5 22C14.4879 22 14.8605 21.9862 16.0347 21.934C17.2049 21.879 18.0065 21.6947 18.7064 21.4225C19.44 21.1462 20.1045 20.7131 20.6534 20.1534C21.2652 19.5415 21.6406 18.9282 21.9225 18.205C22.1934 17.5051 22.379 16.7062 22.434 15.5347C22.4862 14.3619 22.5 13.9879 22.5 11C22.5 8.01213 22.4862 7.63813 22.434 6.46388C22.379 5.29375 22.1934 4.4935 21.9225 3.795C21.646 3.06106 21.2129 2.39618 20.6534 1.84663C20.1042 1.28655 19.4392 0.853387 18.705 0.5775C18.0037 0.30525 17.2035 0.119625 16.0334 0.066C14.8591 0.01375 14.4865 0 11.4973 0H11.5014H11.5ZM10.5141 1.98275H11.5014C14.4384 1.98275 14.7862 1.99238 15.9454 2.046C17.0179 2.09413 17.6009 2.27425 17.9886 2.42412C18.5015 2.6235 18.8686 2.86275 19.2536 3.24775C19.6386 3.63275 19.8765 3.9985 20.0759 4.51275C20.2271 4.89913 20.4059 5.48213 20.454 6.55463C20.5076 7.71375 20.5186 8.06163 20.5186 10.9973C20.5186 13.9329 20.5076 14.2821 20.454 15.4412C20.4059 16.5138 20.2258 17.0954 20.0759 17.4831C19.8995 17.9607 19.618 18.3926 19.2522 18.7467C18.8672 19.1318 18.5015 19.3696 17.9873 19.569C17.6023 19.7203 17.0192 19.899 15.9454 19.9485C14.7862 20.0007 14.4384 20.0131 11.5014 20.0131C8.56437 20.0131 8.21513 20.0007 7.056 19.9485C5.9835 19.899 5.40188 19.7203 5.01412 19.569C4.53631 19.3929 4.10405 19.1119 3.74913 18.7467C3.38303 18.392 3.10112 17.9598 2.92412 17.4818C2.77425 17.0954 2.59413 16.5124 2.546 15.4399C2.49375 14.2807 2.48275 13.9329 2.48275 10.9945C2.48275 8.0575 2.49375 7.711 2.546 6.55187C2.5955 5.47937 2.77425 4.89638 2.9255 4.50863C3.12488 3.99575 3.36413 3.62862 3.74913 3.24362C4.13412 2.85862 4.49987 2.62075 5.01412 2.42138C5.40188 2.27012 5.9835 2.09138 7.056 2.04188C8.07075 1.99513 8.464 1.98137 10.5141 1.98V1.98275ZM17.3726 3.80875C17.1993 3.80875 17.0276 3.84289 16.8675 3.90923C16.7073 3.97557 16.5618 4.0728 16.4392 4.19537C16.3167 4.31794 16.2194 4.46346 16.1531 4.62361C16.0868 4.78376 16.0526 4.9554 16.0526 5.12875C16.0526 5.30209 16.0868 5.47374 16.1531 5.63389C16.2194 5.79404 16.3167 5.93956 16.4392 6.06213C16.5618 6.1847 16.7073 6.28193 16.8675 6.34827C17.0276 6.41461 17.1993 6.44875 17.3726 6.44875C17.7227 6.44875 18.0585 6.30968 18.306 6.06213C18.5536 5.81458 18.6926 5.47884 18.6926 5.12875C18.6926 4.77866 18.5536 4.44292 18.306 4.19537C18.0585 3.94782 17.7227 3.80875 17.3726 3.80875ZM11.5014 5.3515C10.7521 5.33981 10.008 5.47729 9.31234 5.75594C8.61671 6.0346 7.98346 6.44885 7.44946 6.97458C6.91546 7.50032 6.49138 8.12703 6.20191 8.81823C5.91244 9.50944 5.76336 10.2513 5.76336 11.0007C5.76336 11.7501 5.91244 12.4919 6.20191 13.1831C6.49138 13.8743 6.91546 14.5011 7.44946 15.0268C7.98346 15.5525 8.61671 15.9668 9.31234 16.2454C10.008 16.5241 10.7521 16.6616 11.5014 16.6499C12.9844 16.6267 14.3988 16.0214 15.4393 14.9645C16.4799 13.9076 17.0631 12.4839 17.0631 11.0007C17.0631 9.51751 16.4799 8.09382 15.4393 7.03691C14.3988 5.97999 12.9844 5.37464 11.5014 5.3515ZM11.5014 7.33288C12.474 7.33288 13.4067 7.71923 14.0944 8.40695C14.7821 9.09467 15.1685 10.0274 15.1685 11C15.1685 11.9726 14.7821 12.9053 14.0944 13.593C13.4067 14.2808 12.474 14.6671 11.5014 14.6671C10.5288 14.6671 9.59605 14.2808 8.90833 13.593C8.22061 12.9053 7.83425 11.9726 7.83425 11C7.83425 10.0274 8.22061 9.09467 8.90833 8.40695C9.59605 7.71923 10.5288 7.33288 11.5014 7.33288Z" fill="#96BB7C"/>
+                      </svg>
+                    </a>
+                  </li>
+                {% endif %}
+
+                {% if block.settings.tw_link != blank %}
+                  <li class="social--item tw">
+                    <a href="{{ block.settings.tw_link }}" title="twitter">
+                        <svg width="25" height="20" viewBox="0 0 25 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.91075 19C17.213 19 21.7546 12.0731 21.7546 6.07669C21.7546 5.88285 21.7546 5.68625 21.7464 5.49241C22.6306 4.84789 23.3937 4.04993 24 3.13592C23.1741 3.50262 22.2988 3.7443 21.4026 3.85312C22.3466 3.28495 23.0536 2.391 23.3923 1.3374C22.5054 1.86647 21.5346 2.23787 20.5226 2.43534C19.8423 1.70572 18.9419 1.22237 17.9611 1.06016C16.9803 0.897946 15.9737 1.06592 15.0973 1.53807C14.2209 2.01023 13.5236 2.7602 13.1134 3.67182C12.7031 4.58345 12.6029 5.60585 12.8281 6.58066C11.0334 6.49005 9.27762 6.02057 7.67468 5.20269C6.07175 4.3848 4.65744 3.23678 3.5235 1.83307C2.94784 2.83421 2.77216 4.01843 3.03214 5.14526C3.29211 6.27209 3.96825 7.25705 4.92325 7.90013C4.20762 7.87565 3.50772 7.68215 2.88 7.33524V7.39754C2.88123 8.44631 3.24205 9.46247 3.90145 10.2743C4.56086 11.0861 5.4784 11.6438 6.499 11.853C6.11161 11.9605 5.71144 12.014 5.30963 12.0122C5.02635 12.0131 4.74365 11.9867 4.46537 11.9333C4.75383 12.8361 5.3155 13.6254 6.07171 14.1908C6.82793 14.7561 7.74081 15.0691 8.6825 15.0859C7.08276 16.3511 5.10668 17.0373 3.0725 17.034C2.71407 17.0355 2.35588 17.0147 2 16.9716C4.06458 18.297 6.46228 19.0008 8.91075 19Z" fill="#96BB7C"/>
+                        </svg>
+                    </a>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</section>
+<!-- JS -->
+<script></script>
+
+{% schema %}
+  {
+    "name": "Featured Education",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sub_title",
+        "label": "Sub Title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "richtext",
+        "id": "desc",
+        "label": "Description"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Item",
+        "name": "Person Item",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Content Person"
+          },
+          {
+            "type": "image_picker",
+            "id": "person_image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "person_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "person_desc",
+            "label": "Description"
+          },
+          {
+            "type": "header",
+            "content": "Social Links"
+          },
+          {
+            "type": "url",
+            "id": "fb_link",
+            "label": "Facebook Link"
+          },
+          {
+            "type": "url",
+            "id": "ins_link",
+            "label": "Instagram Link"
+          },
+          {
+            "type": "url",
+            "id": "tw_link",
+            "label": "Twitter Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Education"
+      }
+    ]
+  }
+{% endschema %}
