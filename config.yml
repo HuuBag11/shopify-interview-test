@@ -1,0 +1,19 @@
+production:
+  theme_id: "168887320879"
+  store: interview-test-theme.myshopify.com
+
+# Deploy code into Staging
+shopify switch --store interview-test-theme.myshopify.com &&
+git checkout staging && git pull &&
+shopify theme push --theme 168887320879 --ignore templates/*.json , config/*.json , locales/*.json , sections/*.json &&
+shopify theme pull --theme 168887320879 &&
+git pull && git add . &&
+git commit -m 'Update the json' &&
+git push
+
+#Ryo
+# Run theme: shopify theme serve --theme=168887320879
+
+
+#garry 
+# shopify theme dev --theme=137998893224
