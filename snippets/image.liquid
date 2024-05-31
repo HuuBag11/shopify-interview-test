@@ -1,0 +1,19 @@
+{% liquid 
+    if image_mobile == blank 
+        assign image_mobile = image_desktop
+    endif
+%}
+<picture>
+    <!-- Image Mobile -->
+    <source
+        media="(max-width: 576px)"
+        srcset="{{ image_mobile | img_url: '576x768' }}"
+    />
+    <!-- Image Desktop -->
+    <source
+        media="(min-width: 577px)"
+        srcset="{{ image_desktop | img_url: '2000x768' }}"
+    />
+    <!-- Image default -->
+    <img src="{{ image_desktop | img_url: '2000x768' }}" class="img-fluid {{ image_class }}" alt="{{ image_alt }}" {{ image_attr }} loading="lazy"/> 
+</picture>

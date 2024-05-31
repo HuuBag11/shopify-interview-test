@@ -4,7 +4,7 @@
   }
 
   #featuredEducation .featuredEducation__wrapper{
-    padding: 0 10px;
+    padding: 0;
   }
 
   #featuredEducation .subtitle{
@@ -34,6 +34,7 @@
     letter-spacing: 0.2px;
     font-weight: 400;
     margin-bottom: 0;
+    font-family: var(--font-first);
   }
 
   #featuredEducation .featuredEducation__list{
@@ -88,6 +89,7 @@
     line-height: 24px;
     letter-spacing: 0.1px;
     color: var(--text-color-first);
+    margin-bottom: 0;
   }
 
   #featuredEducation .featuredEducation__list--item .item__content--postion{
@@ -95,6 +97,7 @@
     line-height: 16px;
     letter-spacing: 0.2px;
     color: var(--text-color-second);
+    margin-top: 10px;
   }
 
   #featuredEducation .featuredEducation__list--item .item__content--social{
@@ -187,7 +190,7 @@
         <li class="featuredEducation__list--item col-lg-3 col-md-4 col-6">
           <div class="item--wrapper d-flex flex-column h-100">
             <div class="item__image">
-              <img src="{{ block.settings.person_image |  image_url  }}" alt="{{ block.settings.title }}">
+              {% render 'image', image_desktop: block.settings.person_image, image_mobile: block.settings.person_image, image_alt: block.settings.person_title %}
             </div>
             <div class="item__content">
               {% if block.settings.person_title != blank %}
