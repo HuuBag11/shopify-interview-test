@@ -1,24 +1,154 @@
 <style>
   #heroBanner{
     background-color: #FFF2F3;
+    background-image: url(https://interview-test-theme.myshopify.com/cdn/shop/files/col-md-6_2000x768.png?v=1717181487);
+    background-position: right center;
+    background-size: 50% auto;
+    background-repeat: no-repeat;
+    min-height: 680px;
+    max-height: 100vh;
+    display: flex;
   }
 
   #heroBanner .heroBanner__wrapper{
     padding: 0;
+    width: 100%;
+    margin: auto;
   }
 
   #heroBanner .heroBanner__content{
-    padding-left: 190px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #heroBanner .heroBanner__content--wrapper{
+    height: max-content;
+  }
+
+  #heroBanner .heroBanner__content--wrapper .subtitle{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    color: var(--text-color-third);
+    margin-bottom: 30px;
+  }
+
+  #heroBanner .heroBanner__content--wrapper .title{
+    margin: 0;
+    font-size: 58px;
+    line-height: 80px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--text-color-first);
+    margin-bottom: 30px;
+  }
+
+  #heroBanner .heroBanner__content--wrapper .desc{
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--text-color-second);
+    letter-spacing: 0.2px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    font-family: var(--font-first);
+    max-width: 70%;
+  }
+
+  #heroBanner .heroBanner__content--wrapper .button__primary{
+    padding: 15px 40px;
+    border-radius: 5px;
+    border: 1px solid #96BB7C;
+    background-color: #96BB7C;
+    color: #FFF;
+    transition: all 0.4s ease-in-out;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0.2px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #heroBanner .heroBanner__content--wrapper .button__primary:hover{
+    color: #96BB7C;
+    background-color: transparent;
+  }
+
+  #heroBanner .heroBanner__content--wrapper .group__button--item:not(:last-child){
+    margin-right: 10px;
+  }
+
+  #heroBanner .heroBanner__image picture{
+    display: none;
+  }
+
+  @media (max-width: 990px){
+    #heroBanner .heroBanner__wrapper{
+      padding: 0 30px;
+    }
+
+    #heroBanner .heroBanner__content--wrapper .title{
+      font-size: 45px;
+      line-height: 60px;
+    }
+  }
+
+  @media (max-width: 768px){
+    #heroBanner{
+      background-image: unset;
+      min-height: unset;
+    }
+
+    #heroBanner .heroBanner__image picture{
+      display: block;
+    }
+
+    #heroBanner .heroBanner__content{
+      width: 100%;
+    }
+
+    #heroBanner .heroBanner__image{
+      width: 100%;
+    }
+
+    #heroBanner .heroBanner__wrapper{
+      padding: 30px 20px;
+    }
+
+    #heroBanner .heroBanner__wrapper > .row{
+      flex-direction: column-reverse;
+    }
+
+    #heroBanner .heroBanner__content--wrapper{
+      margin-top: 20px;
+    }
+
+    #heroBanner .heroBanner__content--wrapper .subtitle{
+      margin-bottom: 10px;
+    }
+
+    #heroBanner .heroBanner__content--wrapper .title{
+      margin-bottom: 10px;
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    #heroBanner .heroBanner__content--wrapper .desc{
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 15px;
+    }
   }
 </style>
 
 <section id="heroBanner">
-  <div class="heroBanner__wrapper w-100">
+  <div class="heroBanner__wrapper page-width page-width-desktop">
     <div class="row g-0">
         <div class="col-md-6 col-12 heroBanner__content">
-            <div class="heroBanner__content--wrapper h-100 my-auto">
+            <div class="heroBanner__content--wrapper my-auto">
                 <span class="d-block subtitle">Welcome</span>
-                <h1 class="title m-0">Best Learning Opportunities</h1>
+                <h1 class="title">Best Learning Opportunities</h1>
                 <div class="desc">Our goal is to make online education work for everyone</div>
                 <div class="group__button d-flex align-items-center">
                     <a class="button__primary group__button--item" href="/" title="Join us">Join us</a>
